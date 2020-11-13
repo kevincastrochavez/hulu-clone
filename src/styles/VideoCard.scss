@@ -18,4 +18,12 @@
   & h2 {
     padding-top: 10px;
   }
+
+  &__stats {
+    display: none;
+  }
+
+  &:hover > .videoCard__stats {
+    display: inline;
+  }
 }
