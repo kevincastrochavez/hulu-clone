@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import FlipMove from "react-flip-move";
 import VideoCard from "./VideoCard";
 import axios from "../axios";
 
@@ -9,7 +10,6 @@ function Results({ selectedOption }) {
     async function fetchData() {
       const request = await axios.get(selectedOption);
       setMovies(request.data.results);
-      console.log(request.data.results);
 
       return request;
     }
@@ -19,9 +19,11 @@ function Results({ selectedOption }) {
 
   return (
     <div className="results">
-      {movies.map((movie) => (
-        <VideoCard movie={movie} />
-      ))}
+      <FlipMove>
+        {movies.map((movie) => (
+          <VideoCard key={movie.id} movie={movie} />
+        ))}
+      </FlipMove>
     </div>
   );
 }
